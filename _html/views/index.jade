@@ -1,0 +1,15 @@
+extends layouts/home
+include mixins
+
+block head
+  +head
+
+block header
+  +header("Evaluations")
+
+block content
+  div.test
+    h2 Header
+    p Neat does roughly the same thing with the outer-container() and row() mixins. Personally, I prefer having only one mixin to worry about for that: in some cases, row() could encourage extra markup mimicking Bootstrap’s .container > .row > .col pattern where the extra wrapper is unnecessary.
+    +form_login
+

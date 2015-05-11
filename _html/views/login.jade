@@ -1,0 +1,14 @@
+extends layouts/default
+include mixins
+
+block head
+  +head
+
+block content
+  +header("Login")
+    p Text
+  div.container
+    div.row
+      div.col-md-12
+        section.login
+          +form_login

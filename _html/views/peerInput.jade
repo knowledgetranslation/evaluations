@@ -1,0 +1,100 @@
+extends layouts/form
+include mixins
+
+block head
+  +head
+block header
+  h1 Peer Input Tool
+block content
+  form
+    +employeeInfo('peer')
+      p Peer Review is an opportunity for an employee to gain perspective on their preformatnce from those that they work with regularly. As a Peer Reviewer, providing constructive feedback is a way to help your colleage identify opportunities for development, as well show them what they are currently doing that makes them effective in their role. It is not intended for you to express personal feelings about the colleagues you are revieweing. The employee will read what is writen here.
+    include partials/ratingDefinitions
+    h2 St. Michael's Core Competencies
+    +likertGroup("Leads Self")
+      +likert("selfAware", "Is Self-Aware")
+        ul
+          li Demonstrates understanding of own role and responsibilities
+          li Demonstrates awareness of own strengths and limitations
+          li Recognizes when an issue or situation is beyond own knowledge or ability, etc
+      +likert("managesSelf", "Manages Self")
+        ul
+          li Prioritizes own work and workload
+          li Informs others when support is required
+          li Balances competing work demands to maintain personal health, etc
+      +likert("developsSelf", "Develops Self")
+        ul
+          li dasdas
+          li dasd
+          li dasdsa
+      +likert("demonstratesCharacter", "Demonstrates Character")
+        ul
+          li dasdas
+          li dasd
+          li dasdsa
+    +likertGroup("Engages Others")
+      +likert("contributesToOrganization", "Contributes to the Creation of a Healthy Organization")
+        ul
+          li Demonstrates understanding of own role and responsibilities
+          li Demonstrates awareness of own strengths and limitations
+          li Recognizes when an issue or situation is beyond own knowledge or ability, etc
+      +likert("communicatesEffectively", "Communicates Effectively")
+        ul
+          li Prioritizes own work and workload
+          li Informs others when support is required
+          li Balances competing work demands to maintain personal health, etc
+      +likert("buildsEffectiveTeams", "Builds Effective Teams")
+        ul
+          li dasdas
+          li dasd
+          li dasdsa
+    +likertGroup("Achieves Results")
+      +likert("completesTasks", "Ses Tasks to Completion")
+        ul
+          li Demonstrates understanding of own role and responsibilities
+          li Demonstrates awareness of own strengths and limitations
+          li Recognizes when an issue or situation is beyond own knowledge or ability, etc
+      +likert("alignsBehaviours", "Aligns Behavious With St. Michael's Values")
+        ul
+          li Prioritizes own work and workload
+          li Informs others when support is required
+          li Balances competing work demands to maintain personal health, etc
+      +likert("implementsDecisions", "Takes Action to Implement Decisions")
+        ul
+          li dasdas
+          li dasd
+          li dasdsa
+      +likert("assessesResults", "Assesses and Evaluates Results")
+        ul
+          li dasdas
+          li dasd
+          li dasdsa
+    h2 Role Specific Competencies
+    +likertGroup("Role Specific Competenceis")
+      +likert("custom1", "Custom Competency 1")
+        ul
+          li Demonstrates understanding of own role and responsibilities
+          li Demonstrates awareness of own strengths and limitations
+          li Recognizes when an issue or situation is beyond own knowledge or ability, etc
+      +likert("custom2", "Custom Competency 2")
+        ul
+          li Demonstrates understanding of own role and responsibilities
+          li Demonstrates awareness of own strengths and limitations
+          li Recognizes when an issue or situation is beyond own knowledge or ability, etc
+      +likert("custom3", "Custom Competency 3")
+        ul
+          li Demonstrates understanding of own role and responsibilities
+          li Demonstrates awareness of own strengths and limitations
+          li Recognizes when an issue or situation is beyond own knowledge or ability, etc
+    h2 Strengths
+    fieldset
+      legend What are 1-3 of your colleague's strengths?
+      +textarea("strength1", "", "First strength")
+      +textarea("strength2", "", "Second strength")
+      +textarea("strength3", "", "Third strength")
+    h2 Areas of Improvement
+    fieldset
+      legend What are 1-3 areas in which your colleague could improve?
+      +textarea("improve1", "", "First area of improvement")
+      +textarea("improve2", "", "Second area of improvement")
+      +textarea("improve3", "", "Third area of improvement")

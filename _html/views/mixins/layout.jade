@@ -1,0 +1,162 @@
+mixin header(title)
+  header
+    h1= title
+    block
+
+mixin topnav(user)
+  nav.topnav
+    ul.site
+      li
+        a(href="/") Home
+    ul.user
+      if locals.user
+        li Hey, #{user.firstname}
+        li
+          a(href="/logout") Logout
+      else
+        li
+          a(href="/login") Login
+        li
+          a(href="/register") Register
+
+mixin text(name, value, label)
+  label(for=name) #{label}
+    input(type="text", id=name, name=name, value=value)
+
+mixin textarea(name, value, label)
+  if (label)
+    label(for=name) #{label}
+      textarea(tid=name, name=name)
+  else
+    textarea(tid=name, name=name)
+
+mixin checkbox(name, label, checked)
+  label(for=name)
+    if checked && checked.toUpperCase() === label.toUpperCase()
+      input(type="checkbox", id=name, name=name, checked=true)
+      | #{label}
+    else
+      input(type="checkbox", id=name, name=name)
+      | #{label}
+
+mixin radio(name, groupName, label, checked)
+  label(for=groupName + "_" + name)
+    if checked && checked.toUpperCase() === label.toUpperCase()
+      input(type="radio", id=groupName + "_" + name, name=groupName, checked=true)
+      | #{label}
+    else
+      input(type="radio", id=groupName + "_" + name, name=groupName)
+      | #{label}
+
+mixin likert(name, title)
+  div.likert
+    p=title
+    ul.likert
+      li
+        mixin radio('improvementNeeded', name, 'Improvement Needed', false)
+      li
+        mixin radio('developing', name, 'Developing', false)
+      li
+        mixin radio('meetsExpectations', name, 'Meets Expectations', false)
+      li
+        mixin radio('aboveExpectations', name, 'Above Expectations', false)
+      li
+        mixin radio('na', name, 'Not Applicable', false)
+  block
+
+mixin password(name, value, title)
+  key=title
+    input(type="password" name=name value=value)
+
+mixin submit(name, value)
+  input(type="submit" name=name value=value)
+
+mixin employeeInfo(reviewerRelation)
+  fieldset
+    legend Employee Information
+    ul
+      li
+        mixin text('employeeName', null, 'Employee Name')
+      li
+        mixin text('employeeTitle', null, 'Employee Title')
+      li
+        mixin text('employeeDepartment', null, 'Employee Department')
+      li
+        mixin text('employeeManager', null, 'Employee Manager')
+    block
+    ul
+      li I am completing this form as:
+        ul
+          li
+            mixin radio('asManager', 'reviewerRelation', 'Manager', reviewerRelation)
+          li
+            mixin radio('asEmployee', 'reviewerRelation', 'Employee', reviewerRelation)
+          li
+            mixin radio('asPeer', 'reviewerRelation', 'Peer', reviewerRelation)
+    if reviewerRelation === "manager"
+      ul
+        li Overall Rating for office input reference, please complete Overall Rating on Page 5
+          ul
+            li
+              mixin radio('needsImprovement', 'overallRating', 'Needs Improvement', reviewerRelation)
+            li
+              mixin radio('developing', 'overallRating', 'Developing', reviewerRelation)
+            li
+              mixin radio('meetsExpectations', 'overallRating', 'Meets Expectations', reviewerRelation)
+            li
+              mixin radio('aboveExpectations', 'overallRating', 'Above Expectations', reviewerRelation)
+
+
+mixin likertGroup(title)
+  fieldset
+    legend=title
+    block
+    +textarea(title.toLowerCase().split(" ").join("_") + "_comments", "", "Comments for " + title)
+
+mixin managerSupp
+  ul
+    li
+      +checkbox('isPerformanceAppraisal', 'Performance Appraisal')
+    li
+      +textarea('otherUseOfPerformanceAppraisal', 'Other Use of PA tool (describe)')
+    li
+      +checkbox('isProbationary', 'Probationary Review')
+    li Check period of review:
+      ul
+        li
+          +radio('at45days', 'periodOfReview', 'At 45 days', reviewerRelation)
+        li
+          +radio('atEndOfProbabtion', 'periodOfReview', 'At end of probationary period (90 days)', reviewerRelation)
+        li
+          +radio('atOtherPeriod', 'periodOfReview', 'Other period', reviewerRelation)
+          +text('otherPeriod', null, 'Other period')
+    li Check recommendation:
+      ul
+        li
+          +radio('ongoing', 'recommendation', 'Confirm ongoing employment', reviewerRelation)
+        li
+          +radio('terminate', 'recommendation', 'Terminate employment', reviewerRelation)
+        li
+          +radio('extendProbation', 'recommendation', 'Extend probation (requires HR approval) for (length of extension)', reviewerRelation)
+          +text('extensionLength', null, 'Length of extension')
+
+mixin goal(index)
+  div.goal
+    fieldset
+      legend Goal #{index}
+      h4 Area of Development / Objective
+      p What did this PA or other performance conversations identify as areas of improvement? What is the skill or behaviour you want to chance?
+      p.example Establish routine flow of work for my area of responsibility.
+      +textarea("goal" + index + "_objective", "")
+      h4 Method, Resources and Strategies
+      p What will you **do** to change these skills or behaviour? Do you have the resource to achieve this goal? If not, how will you get them?
+      p.example Ask co-workers in my area waht their schedules and needs are.
+      +textarea("goal" + index + "_method", "")
+      h4 Measurement
+      p How will you (and others) know when you have reached your goal?
+      p.example Ask co-workers in area if their experience is better; Write down answers and give to my manager.
+      +textarea("goal" + index + "_measurement", "")
+      h4 Target Completion Date
+      p When will you achieve this goal by?
+      p.example MM/DD/YYYY, 3 months
+      +textarea("goal" + index + "_target", "")

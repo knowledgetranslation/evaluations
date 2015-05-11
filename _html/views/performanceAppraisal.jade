@@ -1,0 +1,116 @@
+extends layouts/form
+include mixins
+
+block head
+  +head
+block header
+  h1 Performance Appraisal
+block content
+  form
+    +employeeInfo('manager')
+      +managerSupp
+    include partials/ratingDefinitions
+    h2 St. Michael's Core Competencies
+    +likertGroup("Leads Self")
+      +likert("selfAware", "Is Self-Aware")
+        ul
+          li Demonstrates understanding of own role and responsibilities
+          li Demonstrates awareness of own strengths and limitations
+          li Recognizes when an issue or situation is beyond own knowledge or ability, etc
+      +likert("managesSelf", "Manages Self")
+        ul
+          li Prioritizes own work and workload
+          li Informs others when support is required
+          li Balances competing work demands to maintain personal health, etc
+      +likert("developsSelf", "Develops Self")
+        ul
+          li dasdas
+          li dasd
+          li dasdsa
+      +likert("demonstratesCharacter", "Demonstrates Character")
+        ul
+          li dasdas
+          li dasd
+          li dasdsa
+    +likertGroup("Engages Others")
+      +likert("contributesToOrganization", "Contributes to the Creation of a Healthy Organization")
+        ul
+          li Demonstrates understanding of own role and responsibilities
+          li Demonstrates awareness of own strengths and limitations
+          li Recognizes when an issue or situation is beyond own knowledge or ability, etc
+      +likert("communicatesEffectively", "Communicates Effectively")
+        ul
+          li Prioritizes own work and workload
+          li Informs others when support is required
+          li Balances competing work demands to maintain personal health, etc
+      +likert("buildsEffectiveTeams", "Builds Effective Teams")
+        ul
+          li dasdas
+          li dasd
+          li dasdsa
+    +likertGroup("Achieves Results")
+      +likert("completesTasks", "Ses Tasks to Completion")
+        ul
+          li Demonstrates understanding of own role and responsibilities
+          li Demonstrates awareness of own strengths and limitations
+          li Recognizes when an issue or situation is beyond own knowledge or ability, etc
+      +likert("alignsBehaviours", "Aligns Behavious With St. Michael's Values")
+        ul
+          li Prioritizes own work and workload
+          li Informs others when support is required
+          li Balances competing work demands to maintain personal health, etc
+      +likert("implementsDecisions", "Takes Action to Implement Decisions")
+        ul
+          li dasdas
+          li dasd
+          li dasdsa
+      +likert("assessesResults", "Assesses and Evaluates Results")
+        ul
+          li dasdas
+          li dasd
+          li dasdsa
+    h2 Role Specific Competencies
+    +likertGroup("Role Specific Competenceis")
+      +likert("custom1", "Custom Competency 1")
+        ul
+          li Demonstrates understanding of own role and responsibilities
+          li Demonstrates awareness of own strengths and limitations
+          li Recognizes when an issue or situation is beyond own knowledge or ability, etc
+      +likert("custom2", "Custom Competency 2")
+        ul
+          li Demonstrates understanding of own role and responsibilities
+          li Demonstrates awareness of own strengths and limitations
+          li Recognizes when an issue or situation is beyond own knowledge or ability, etc
+      +likert("custom3", "Custom Competency 3")
+        ul
+          li Demonstrates understanding of own role and responsibilities
+          li Demonstrates awareness of own strengths and limitations
+          li Recognizes when an issue or situation is beyond own knowledge or ability, etc
+    h2 Manager's Overall Comments
+    fieldset
+      legend Comments
+      p.example Anything to add? What are the Employee's key strengths and opportunities? Is there something that requires special mention?
+      +textarea("managerComments", "", "")
+    h2 Employee's Overall Comments
+    fieldset
+      legend Comments
+      p.example How does the feedback resonate with you? What stands out for you? What did you take-away from the conversation?
+      +textarea("employeeComments", "", "")
+    h2 Overall Performance Rating
+    fieldset
+      legend Rating
+      ul
+        li
+          mixin radio('needsImprovement', 'overallRating', 'Needs Improvement', reviewerRelation)
+        li
+          mixin radio('developing', 'overallRating', 'Developing', reviewerRelation)
+        li
+          mixin radio('meetsExpectations', 'overallRating', 'Meets Expectations', reviewerRelation)
+        li
+          mixin radio('aboveExpectations', 'overallRating', 'Above Expectations', reviewerRelation)
+    h2 Personal Development Plan
+    include partials/personalDevelopmentPlan
+    .goals
+      +goal("1")
+      +goal("2")
+      +goal("3")

@@ -1,0 +1,18 @@
+//
+doctype html
+html
+  head
+    title My title
+    block head
+  body.default
+    +topnav(locals.user)
+    .header
+      block header
+    .container
+      nav.main
+        ul
+          li one
+          li two
+          li three
+      .content
+        block content

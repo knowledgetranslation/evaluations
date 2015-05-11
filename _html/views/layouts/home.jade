@@ -1,0 +1,13 @@
+//
+doctype html
+html
+  head
+    title My title
+    block head
+  body.home
+    +topnav(locals.user)
+    .header
+      block header
+    .container
+      .content
+        block content

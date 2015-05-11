@@ -1,0 +1,23 @@
+{
+  "name": "www",
+  "main": "index.js",
+  "version": "0.0.0",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "~3.0.3",
+    "bourbon": "~4.2.2",
+    "jquery": "~2.1.4",
+    "susy": "~2.2.3",
+    "modular-scale": "~2.0.7",
+    "compass-breakpoint": "~2.5.0",
+    "bitters": "~1.0.0"
+  }
+}
